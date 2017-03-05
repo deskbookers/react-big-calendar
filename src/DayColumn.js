@@ -214,13 +214,13 @@ let DaySlot = React.createClass({
     let selector = this._selector = new Selection(()=> findDOMNode(this))
 
     let maybeSelect = (box) => {
-      let { onSelecting, businessHours } = this.props
+      let { onSelecting } = this.props
       let current = this.state || {};
       let state = selectionState(box);
       let { startDate: start, endDate: end } = state;
 
       // Return if there are business hours and the start date is not included
-      if (businessHours.length > 0 && (!dateIsInBusinessHours(state.startDate, businessHours, true) || !dateIsInBusinessHours(state.endDate, businessHours, true))) {
+      if (isSelectionInBusinessHours(box)) {
         return
       }
 
@@ -234,6 +234,14 @@ let DaySlot = React.createClass({
       }
 
       this.setState(state)
+    }
+
+    let isSelectionInBusinessHours = (box) => {
+      let { businessHours } = this.props;
+      let state = selectionState(box);
+      let { startDate: start, endDate: end } = state;
+
+      return businessHours.length > 0 && (!dateIsInBusinessHours(state.startDate, businessHours, true) || !dateIsInBusinessHours(state.endDate, businessHours, true));
     }
 
     let selectionState = ({ y }) => {
@@ -279,6 +287,9 @@ let DaySlot = React.createClass({
 
     selector
       .on('click', (box) => {
+        if (isSelectionInBusinessHours(box))
+          return
+
         if (!isEvent(findDOMNode(this), box))
           this._selectSlot(selectionState(box))
 
