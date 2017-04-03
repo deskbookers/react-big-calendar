@@ -35,10 +35,11 @@ export function dateIsInBusinessHours(date, businessHours, endIncluded = false){
 
 export function extractHoursMinutesFromTime(time){
   // time : HH:MM
-  const values = time.split(":");
+  const values = time.split(':');
 
   return {
     hours: values[0] ? parseInt(values[0]) : 0,
     minutes: values[1] ? parseInt(values[1]) : 0
   };
 }
+

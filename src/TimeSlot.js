@@ -12,7 +12,8 @@ export default class TimeSlot extends Component {
     showLabel: PropTypes.bool,
     content: PropTypes.string,
     culture: PropTypes.string,
-    isGutter: PropTypes.bool
+    isGutter: PropTypes.bool,
+    businessHours: PropTypes.any
   }
 
   static defaultProps = {
