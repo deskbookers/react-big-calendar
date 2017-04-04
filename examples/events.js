@@ -1,9 +1,15 @@
 export default [
   {
-    'title': 'All Day Event',
-    'allDay': true,
-    'start': new Date(2015, 3, 0),
-    'end': new Date(2015, 3, 1)
+    'title': 'Meeting',
+    'resourceId': 'a',
+    'start': new Date(2015, 3, 1, 5, 30, 0, 0),
+    'end': new Date(2015, 3, 1, 10, 30, 0, 0),
+  },
+  {
+    'title': 'Another Meeting',
+    'resourceId': 'b',
+    'start': new Date(2015, 3, 1, 2, 30, 0, 0),
+    'end': new Date(2015, 3, 1, 4, 30, 0, 0),
   },
   {
     'title': 'Long Event',
@@ -48,8 +54,8 @@ export default [
   },
   {
     'title': 'Meeting',
-    'start':new Date(2015, 3, 12,14, 0, 0, 0),
-    'end': new Date(2015, 3, 12,15, 0, 0, 0)
+    'start': new Date(2015, 3, 12, 14, 0, 0, 0),
+    'end': new Date(2015, 3, 12, 15, 0, 0, 0)
   },
   {
     'title': 'Happy Hour',

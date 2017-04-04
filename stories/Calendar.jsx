@@ -38,8 +38,33 @@ const events = [{
     allDay: true
   }]
 
+  const resources = [{
+    id: 'a',
+    title: 'Room A'
+  }, {
+    id: 'b',
+    title: 'Room B'
+  }, {
+    id: 'c',
+    title: 'Room C'
+  }]
+
 storiesOf('module.Calendar.week', module)
   .add('demo', () => {
+    return (
+      <div style={{height: 500}}>
+        <Calendar
+          popup
+          events={demoEvents}
+          resources={resources}
+          onSelectEvent={action('event selected')}
+          defaultDate={new Date(2015, 3, 1)}
+        />
+      </div>
+    )
+  })
+
+  .add('resource', () => {
     return (
       <div style={{height: 500}}>
         <Calendar
