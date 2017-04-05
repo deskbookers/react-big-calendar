@@ -38,6 +38,21 @@ const events = [{
     allDay: true
   }]
 
+const eventsResources = [
+  {
+    'title': 'Meeting',
+    'resourceId': 'a',
+    'start': new Date(2015, 3, 1, 5, 30, 0, 0),
+    'end': new Date(2015, 3, 1, 10, 30, 0, 0),
+  },
+  {
+    'title': 'Another Meeting',
+    'resourceId': 'b',
+    'start': new Date(2015, 3, 1, 2, 30, 0, 0),
+    'end': new Date(2015, 3, 1, 4, 30, 0, 0),
+  }
+]
+
   const resources = [{
     id: 'a',
     title: 'Room A'
@@ -56,7 +71,6 @@ storiesOf('module.Calendar.week', module)
         <Calendar
           popup
           events={demoEvents}
-          resources={resources}
           onSelectEvent={action('event selected')}
           defaultDate={new Date(2015, 3, 1)}
         />
@@ -69,7 +83,8 @@ storiesOf('module.Calendar.week', module)
       <div style={{height: 500}}>
         <Calendar
           popup
-          events={demoEvents}
+          events={eventsResources}
+          resources={resources}
           onSelectEvent={action('event selected')}
           defaultDate={new Date(2015, 3, 1)}
         />
