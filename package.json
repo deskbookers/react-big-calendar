@@ -1,6 +1,6 @@
 {
   "name": "deskbookers-calendar",
-  "version": "0.14.1",
+  "version": "0.15.0",
   "description": "Calendar! with events",
   "author": "Jason Quense <monastic.panic@gmail.com>",
   "repository": "deskbookers/react-big-calendar",
