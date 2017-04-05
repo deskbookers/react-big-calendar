@@ -13,6 +13,7 @@ export default class TimeSlotGroup extends Component {
     showLabels: PropTypes.bool,
     isNow: PropTypes.bool,
     timeGutterFormat: PropTypes.string,
+    resource: PropTypes.string,
     culture: PropTypes.string,
     businessHours: PropTypes.array,
     isGutter: PropTypes.bool,
@@ -25,11 +26,12 @@ export default class TimeSlotGroup extends Component {
   }
 
   renderSlice(slotNumber, content, value) {
-    const { dayWrapperComponent, showLabels, isNow, culture, businessHours, isGutter } = this.props;
+    const { resource, dayWrapperComponent, showLabels, isNow, culture, businessHours, isGutter } = this.props;
 
     return (
       <TimeSlot
         key={slotNumber}
+        resource={resource}
         dayWrapperComponent={dayWrapperComponent}
         showLabel={showLabels && !slotNumber}
         content={content}

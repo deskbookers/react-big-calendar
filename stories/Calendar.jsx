@@ -5,8 +5,12 @@ import React from 'react';
 import Calendar from '../src';
 import momentLocalizer from '../src/localizers/moment.js'
 import '../src/less/styles.less'
+import '../src/addons/dragAndDrop/styles.less'
 import demoEvents from '../examples/events';
 import createEvents from './createEvents';
+import HTML5Backend from 'react-dnd-html5-backend';
+import { DragDropContext } from 'react-dnd';
+import withDragAndDrop from '../src/addons/dragAndDrop';
 
 // Setup the localizer by providing the moment (or globalize) Object
 // to the correct localizer.
@@ -64,6 +68,23 @@ const eventsResources = [
     title: 'Room C'
   }]
 
+const DragAndDropCalendar = withDragAndDrop(Calendar)
+
+const DragCalendar = () => {
+  return (
+    <DragAndDropCalendar
+      popup
+      events={eventsResources}
+      resources={resources}
+      onEventDrop={(event) => { action(event) }}
+      onSelectEvent={action('event selected')}
+      defaultDate={new Date(2015, 3, 1)}
+    />
+  )
+}
+
+const DragableCalendar = DragDropContext(HTML5Backend)(DragCalendar)
+
 storiesOf('module.Calendar.week', module)
   .add('demo', () => {
     return (
@@ -81,13 +102,7 @@ storiesOf('module.Calendar.week', module)
   .add('resource', () => {
     return (
       <div style={{height: 500}}>
-        <Calendar
-          popup
-          events={eventsResources}
-          resources={resources}
-          onSelectEvent={action('event selected')}
-          defaultDate={new Date(2015, 3, 1)}
-        />
+        <DragableCalendar />
       </div>
     )
   })

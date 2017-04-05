@@ -19,7 +19,7 @@ import { accessor as get } from './utils/accessors';
 
 import { inRange, sortEvents, segStyle } from './utils/eventLevels';
 
-export default class TimeGrid extends Component {
+export default class ResourceGrid extends Component {
 
   static propTypes = {
     events: React.PropTypes.array.isRequired,
@@ -211,6 +211,7 @@ export default class TimeGrid extends Component {
         <DayColumn
           {...this.props }
           key={id}
+          resource={id}
           min={dates.merge(date, min)}
           max={dates.merge(date, max)}
           eventComponent={components.event}

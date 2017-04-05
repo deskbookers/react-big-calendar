@@ -12,6 +12,7 @@ export default class TimeSlot extends Component {
     showLabel: PropTypes.bool,
     content: PropTypes.string,
     culture: PropTypes.string,
+    resource: PropTypes.string,
     isGutter: PropTypes.bool,
     businessHours: PropTypes.any
   }
@@ -23,12 +24,12 @@ export default class TimeSlot extends Component {
   }
 
   render() {
-    const { value, businessHours } = this.props;
+    const { resource, value, businessHours } = this.props;
     const Wrapper = this.props.dayWrapperComponent;
     const isDisabled = businessHours.length > 0 ? !dateIsInBusinessHours(value, businessHours) : false;
 
     return (
-      <Wrapper value={value}>
+      <Wrapper value={value} resource={resource}>
         <div
           className={cn(
             'rbc-time-slot',

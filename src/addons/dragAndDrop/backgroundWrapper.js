@@ -29,46 +29,6 @@ const propTypes = {
 }
 
 class DraggableBackgroundWrapper extends React.Component {
-  // constructor(...args) {
-  //   super(...args);
-  //   this.state = { isOver: false };
-  // }
-  //
-  // componentWillMount() {
-  //   let monitor = this.context.dragDropManager.getMonitor()
-  //
-  //   this.monitor = monitor
-  //
-  //   this.unsubscribeToStateChange = monitor
-  //     .subscribeToStateChange(this.handleStateChange)
-  //
-  //   this.unsubscribeToOffsetChange = monitor
-  //     .subscribeToOffsetChange(this.handleOffsetChange)
-  // }
-  //
-  // componentWillUnmount() {
-  //   this.monitor = null
-  //   this.unsubscribeToStateChange()
-  //   this.unsubscribeToOffsetChange()
-  // }
-  //
-  // handleStateChange = () => {
-  //   const event = this.monitor.getItem();
-  //   if (!event && this.state.isOver) {
-  //     this.setState({ isOver: false });
-  //   }
-  // }
-  //
-  // handleOffsetChange = () => {
-  //   const { value } = this.props;
-  //   const { start, end } = this.monitor.getItem();
-  //
-  //   const isOver = dates.inRange(value, start, end, 'minute');
-  //   if (this.state.isOver !== isOver) {
-  //     this.setState({ isOver });
-  //   }
-  // };
-
   render() {
     const { connectDropTarget, children, type, isOver } = this.props;
     const BackgroundWrapper = BigCalendar.components[type];
@@ -106,12 +66,13 @@ function createWrapper(type) {
   const dropTarget = {
     drop(_, monitor, { props, context }) {
       const event = monitor.getItem();
-      const { value } = props
+      const { value, resource } = props
       const { onEventDrop } = context
 
       onEventDrop({
         event,
-        ...getEventTimes(event, value, type)
+        ...getEventTimes(event, value, type),
+       ...resource && { resource }
       })
     }
   };
