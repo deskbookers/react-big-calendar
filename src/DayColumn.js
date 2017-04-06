@@ -58,6 +58,7 @@ let DaySlot = React.createClass({
     eventComponent: elementType,
     eventWrapperComponent: elementType.isRequired,
 
+    resource: React.PropTypes.string,
     businessHours: React.PropTypes.array
   },
 
@@ -311,6 +312,7 @@ let DaySlot = React.createClass({
 
     notify(this.props.onSelectSlot, {
       slots,
+      resourceId: this.props.resource,
       start: startDate,
       end: endDate
     })

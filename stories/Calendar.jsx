@@ -74,10 +74,12 @@ const DragCalendar = () => {
   return (
     <DragAndDropCalendar
       popup
+      selectable
       events={eventsResources}
       resources={resources}
       onEventDrop={(event) => { action(event) }}
       onSelectEvent={action('event selected')}
+      onSelectSlot={action('slot selected')}
       defaultDate={new Date(2015, 3, 1)}
     />
   )
