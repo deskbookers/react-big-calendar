@@ -310,9 +310,11 @@ let DaySlot = React.createClass({
       current = dates.add(current, this.props.step, 'minutes')
     }
 
+    const resourceId = this.props.resource
+
     notify(this.props.onSelectSlot, {
       slots,
-      resourceId: this.props.resource,
+      ...resourceId && { resourceId },
       start: startDate,
       end: endDate
     })
