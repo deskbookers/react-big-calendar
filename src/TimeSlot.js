@@ -26,7 +26,10 @@ export default class TimeSlot extends Component {
   render() {
     const { resource, value, businessHours } = this.props;
     const Wrapper = this.props.dayWrapperComponent;
-    const isDisabled = businessHours.length > 0 ? !dateIsInBusinessHours(value, businessHours) : false;
+    const inBusinessHours = dateIsInBusinessHours(value, businessHours)
+    const isDisabled = businessHours.length > 0 ? !inBusinessHours : false;
+
+    const styles = !this.props.isGutter && inBusinessHours ? { backgroundColor: inBusinessHours.color } : {}
 
     return (
       <Wrapper value={value} resource={resource}>
@@ -37,6 +40,7 @@ export default class TimeSlot extends Component {
             this.props.isNow && 'rbc-now',
             !this.props.isGutter && isDisabled && 'rbc-disabled'
           )}
+          style={styles}
         >
         {this.props.showLabel &&
           <span>{this.props.content}</span>

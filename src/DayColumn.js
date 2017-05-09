@@ -220,10 +220,10 @@ let DaySlot = React.createClass({
       let state = selectionState(box);
       let { startDate: start, endDate: end } = state;
 
-      // Return if there are business hours and the start date is not included
-      if (businessHours.length > 0 && (!dateIsInBusinessHours(state.startDate, businessHours, true) || !dateIsInBusinessHours(state.endDate, businessHours, true))) {
-        return
-      }
+      // DESKBOOKERS: we allow selecting during bussiness hours slots
+      //if (businessHours.length > 0 && (!dateIsInBusinessHours(state.startDate, businessHours, true) || !dateIsInBusinessHours(state.endDate, businessHours, true))) {
+        //return
+      //}
 
       if (onSelecting) {
         if (

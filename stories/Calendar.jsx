@@ -45,28 +45,41 @@ const events = [{
 const eventsResources = [
   {
     'title': 'Meeting',
-    'resourceId': 'a',
+    'resourceId': 17665,
     'start': new Date(2015, 3, 1, 5, 30, 0, 0),
-    'end': new Date(2015, 3, 1, 10, 30, 0, 0),
+    'end': new Date(2015, 3, 1, 23, 59, 0, 0),
   },
   {
     'title': 'Another Meeting',
     'resourceId': 'b',
     'start': new Date(2015, 3, 1, 2, 30, 0, 0),
-    'end': new Date(2015, 3, 1, 4, 30, 0, 0),
+    'end': new Date(2015, 3, 1, 3, 0, 0, 0),
   }
 ]
 
-  const resources = [{
-    id: 'a',
-    title: 'Room A'
-  }, {
-    id: 'b',
-    title: 'Room B'
-  }, {
-    id: 'c',
-    title: 'Room C'
-  }]
+
+const resources = [{
+  id: 'a',
+  title: 'Room A'
+}, {
+  id: 'b',
+  title: 'Room B'
+}, {
+  id: 'c',
+  title: 'Room C'
+}]
+
+const businessHours = [{
+  color: 'blue',
+  dow: [1],
+  start: '08:00',
+  end: '19:00'
+}, {
+  color: 'red',
+  dow: [2],
+  start: '08:00',
+  end: '19:00'
+}]
 
 const DragAndDropCalendar = withDragAndDrop(Calendar)
 
@@ -76,6 +89,7 @@ const DragCalendar = () => {
       popup
       selectable
       events={eventsResources}
+      businessHours={businessHours}
       resources={resources}
       onEventDrop={(event) => { action(event) }}
       onSelectEvent={action('event selected')}

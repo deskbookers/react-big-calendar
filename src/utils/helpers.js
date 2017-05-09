@@ -23,7 +23,7 @@ export function dateIsInBusinessHours(date, businessHours, endIncluded = false){
   const hours = date.getHours();
   const weekDay = date.getDay();
 
-  return businessHours.some((businessHour) => {
+  return businessHours.find((businessHour) => {
     const start = extractHoursMinutesFromTime(businessHour.start);
     const end = extractHoursMinutesFromTime(businessHour.end);
 
