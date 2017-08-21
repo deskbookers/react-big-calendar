@@ -107,6 +107,7 @@ storiesOf('module.Calendar.week', module)
       <div style={{height: 500}}>
         <Calendar
           popup
+          defaultView="agenda"
           events={demoEvents}
           onSelectEvent={action('event selected')}
           defaultDate={new Date(2015, 3, 1)}
