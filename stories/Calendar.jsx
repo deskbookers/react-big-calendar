@@ -94,7 +94,6 @@ const DragCalendar = () => {
       onEventDrop={(event) => { action(event) }}
       onSelectEvent={action('event selected')}
       onSelectSlot={action('slot selected')}
-      defaultDate={new Date(2015, 3, 1)}
     />
   )
 }
@@ -111,6 +110,9 @@ storiesOf('module.Calendar.week', module)
           events={demoEvents}
           onSelectEvent={action('event selected')}
           defaultDate={new Date(2015, 3, 1)}
+          components={{
+            emptyComponent: () => (<h1>Empty papu</h1>)
+          }}
         />
       </div>
     )

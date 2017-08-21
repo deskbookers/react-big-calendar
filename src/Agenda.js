@@ -52,7 +52,7 @@ let Agenda = React.createClass({
   },
 
   render() {
-    let { date, events, startAccessor } = this.props;
+    let { date, events, startAccessor, components } = this.props;
     let messages = message(this.props.messages);
 
     let { start, end } = Agenda.range(date, this.props);
@@ -80,11 +80,13 @@ let Agenda = React.createClass({
           </thead>
         </table>
         <div className='rbc-agenda-content' ref='content'>
-          <table>
-            <tbody ref='tbody'>
-              { range.map((day, idx) => this.renderDay(day, events, idx)) }
-            </tbody>
-          </table>
+          {events.length > 0 ?  <table>
+              <tbody ref='tbody'>
+                { range.map((day, idx) => this.renderDay(day, events, idx)) }
+              </tbody>
+            </table>
+            : components.emptyComponent()
+          }
         </div>
       </div>
     );
@@ -165,7 +167,7 @@ let Agenda = React.createClass({
 
   _adjustHeader() {
     let header = this.refs.header;
-    let firstRow = this.refs.tbody.firstChild
+    let firstRow = this.refs.tbody && this.refs.tbody.firstChild
 
     if (!firstRow)
       return

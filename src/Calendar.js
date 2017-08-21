@@ -418,13 +418,14 @@ let Calendar = React.createClass({
       eventWrapper: elementType,
       dayWrapper: elementType,
       dateCellWrapper: elementType,
+      emptyComponent: elementType,
 
       toolbar: elementType,
 
       agenda: PropTypes.shape({
         date: elementType,
         time: elementType,
-        event: elementType
+        event: elementType,
       }),
 
       day: PropTypes.shape({
