@@ -91,7 +91,7 @@ let Agenda = React.createClass({
   },
 
   onRowClick(event) {
-    notify(this.props.onSelectEvent, { event })
+    notify(this.props.onSelectEvent, event)
   },
 
   renderDay(day, events, dayKey){
