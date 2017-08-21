@@ -3,6 +3,7 @@ import classes from 'dom-helpers/class';
 import getWidth from 'dom-helpers/query/width';
 import scrollbarSize from 'dom-helpers/util/scrollbarSize';
 
+import { notify } from './utils/helpers';
 import localizer from './localizer'
 import message from './utils/messages';
 import dates from './utils/dates';
@@ -23,6 +24,7 @@ let Agenda = React.createClass({
     startAccessor: accessor.isRequired,
     endAccessor: accessor.isRequired,
 
+    onSelectEvent: React.PropTypes.func,
     agendaDateFormat: dateFormat,
     agendaTimeFormat: dateFormat,
     agendaTimeRangeFormat: dateRangeFormat,
@@ -88,6 +90,10 @@ let Agenda = React.createClass({
     );
   },
 
+  onRowClick(event) {
+    notify(this.props.onSelectEvent, { event })
+  },
+
   renderDay(day, events, dayKey){
     let {
         culture, components
@@ -103,7 +109,7 @@ let Agenda = React.createClass({
       let title = get(event, titleAccessor)
 
       return (
-        <tr key={dayKey + '_' + idx}>
+        <tr key={dayKey + '_' + idx} onClick={this.onRowClick.bind(this, event)}>
           <td className='rbc-agenda-date-cell'>
             {dateLabel}
             <br />
